@@ -93,8 +93,8 @@ class TicketController extends Controller
         $pdf = PDF::loadView('admin.gala.ticket', $data);
        
         $pdf_name = $nom.'_'.$prenom ;
-       // $email = $personne->email;
-        $email = 'awabamba973@gmail.com' ;
+       $email = $personne->email;
+        //$email = 'awabamba973@gmail.com' ;
 
 
 
