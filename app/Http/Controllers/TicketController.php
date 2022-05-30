@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use PDF;
+use App\Models\Log;
 use App\Models\Gala;
 use App\Models\Ticket;
+
+
 use App\Mail\TicketMail;
-
-
 use App\Models\Etudiant;
 use App\Models\Personne;
 use App\Models\TypeTicket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -28,7 +30,7 @@ class TicketController extends Controller
         //
     }
 
-    public function getTicket(int $id=3)
+    public function getTicket(int $id)
     {
 
         $personne = personne::find($id) ;
@@ -56,7 +58,7 @@ class TicketController extends Controller
        
        // return $pdf->download('dfdf.pdf');
 
-        return $pdf->stream('ok.pdf');
+        return $pdf->stream($nom.'_'.$prenom.'pdf');
 
        // return view('admin.gala.ticket') ;
     }
@@ -253,6 +255,11 @@ class TicketController extends Controller
                     'code' => ''
                 ]);
 
+                Log::create([
+                    'user_id' =>  Auth::user()->id,
+                    'ticket_id' => $ticket->id
+                ]);
+
                 $code = 'ITGALA22-00'.$ticket->id ;
                 $ticket->code = $code ;
                 $ticket->save() ;
@@ -337,6 +344,12 @@ class TicketController extends Controller
                 'code' => ''
             ]);
 
+            Log::create([
+                'user_id' =>  Auth::user()->id,
+                'ticket_id' => $ticket->id
+            ]);
+
+
             $code = 'ITGALA22-00'.$ticket->id ;
             $ticket->code = $code ;
             $ticket->save() ;
@@ -388,6 +401,12 @@ class TicketController extends Controller
             'code' => ''
         ]);
 
+        Log::create([
+            'user_id' =>  Auth::user()->id,
+            'ticket_id' => $ticket->id
+        ]);
+
+
         $code = 'ITGALA22-00'.$ticket->id ;
         $ticket->code = $code ;
         $ticket->save() ;
@@ -434,6 +453,12 @@ class TicketController extends Controller
             'nbUtilisation' => 2,
             'code' => ''
         ]);
+
+        Log::create([
+            'user_id' =>  Auth::user()->id,
+            'ticket_id' => $ticket->id
+        ]);
+
 
         $code = 'ITGALA22-00'.$ticket->id ;
         $ticket->code = $code ;
@@ -511,6 +536,13 @@ class TicketController extends Controller
             $code = 'ITGALA22-00'.$ticket->id ;
             $ticket->code = $code ;
             $ticket->save() ;
+
+
+            Log::create([
+                'user_id' =>  Auth::user()->id,
+                'ticket_id' => $ticket->id
+            ]);
+
 
             session()->flash('success', 'Ticket enregistré avec success.');
     

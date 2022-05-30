@@ -15,6 +15,7 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            
 
             $table->unsignedBigInteger('gala_id');
             $table->foreign('gala_id')->references('id')->on('galas')->onDelete('cascade');

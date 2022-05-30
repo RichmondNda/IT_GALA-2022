@@ -24,7 +24,7 @@ class CategorieNomine extends Component
         return view('livewire.admin.parametres.categorie-nomine',
             [
                 'categories' => Categorie::where('gala_id', $gala->id)
-                                        ->orderBy('created_at', 'DESC')->paginate(4),
+                                        ->orderBy('created_at', 'DESC')->paginate(6),
             
             ]
         );

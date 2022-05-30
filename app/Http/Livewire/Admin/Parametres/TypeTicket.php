@@ -22,7 +22,7 @@ class TypeTicket extends Component
         return view('livewire.admin.parametres.type-ticket',
         [
             'typeTickets' => ModelsTypeTicket::where('gala_id', $gala->id)
-                                    ->orderBy('created_at', 'DESC')->paginate(4),
+                                    ->orderBy('created_at', 'DESC')->paginate(6),
         ]);
     }
 

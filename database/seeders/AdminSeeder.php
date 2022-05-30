@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Gala;
+use App\Models\TypeTicket;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -22,7 +23,7 @@ class AdminSeeder extends Seeder
             'annee' => '2021-2022',
             'nomPco1' => 'Ahiman Ruth',
             'nomPco2' => 'Bamaba Awa Nourdine',
-            'nbPlace' => 200
+            'nbPlace' => 150
         ]);
 
 
@@ -61,5 +62,36 @@ class AdminSeeder extends Seeder
             
         $user1->assignRole('Super@Administrateur') ;
 
+        
+
+        TypeTicket::create([
+            'libelle' => 'solo interne',
+            'prix' => 20000,
+            'gala_id' => $gala->id
+        ]);
+
+        TypeTicket::create([
+            'libelle' => 'solo externe',
+            'prix' => 25000,
+            'gala_id' => $gala->id
+        ]);
+
+        TypeTicket::create([
+            'libelle' => 'couple interne',
+            'prix' => 35000,
+            'gala_id' => $gala->id
+        ]);
+
+        TypeTicket::create([
+            'libelle' => 'couple mixte',
+            'prix' => 40000,
+            'gala_id' => $gala->id
+        ]);
+
+        TypeTicket::create([
+            'libelle' => 'couple externe',
+            'prix' => 40000,
+            'gala_id' => $gala->id
+        ]);
     }
 }
