@@ -85,7 +85,11 @@
                         <div class="col-span-3 bg-white rounded-md shadow-sm p-4  ">
                             
                             <div class="h-64 flex justify-center ">
-                                <img class="object-contain  h-full"   src="{{asset('images/'. $nomine->photo)}}" alt="{{$nomine->user->etudiant->nom}}">
+                                @if(env("FILESYSTEM_DRIVER")=="s3")
+                                    <img class="object-contain  h-full"   src="{{Storage::url($nomine->photo)}}" alt="{{$nomine->user->etudiant->nom}}">
+                                @else
+                                    <img class="object-contain  h-full"   src="{{asset('images/'. $nomine->photo)}}" alt="{{$nomine->user->etudiant->nom}}">
+                                @endif
                             </div>
 
 

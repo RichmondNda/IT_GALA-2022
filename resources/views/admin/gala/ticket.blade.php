@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div class="ticket-owner">
-                        <div class="owner-name" style="text-transform: uppercase;">
+                        <div class="owner-name">
                             {{$nom}}
                             <br>
                             {{$prenom}}
@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <div class="ticket-qrcode">
-                    <div class="qrcode-container" style="background-image: url(qrcode.png);">
+                    <div class="qrcode-container" style="padding: 8px; background:#fff">
                         <img src="data:image/png;base64, {!! $qr_code !!}">
                     </div>
                     <div class="c2e">

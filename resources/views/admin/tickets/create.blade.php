@@ -7,7 +7,7 @@
 
     <div>
 
-        <div class="mx-auto max-w-7xl sm:px-6 md:px-8">
+        <div class="mx-auto max-w-7xl sm:px-6 md:px-4">
 
             <div class="pt-8 px-6 md:flex gap-6  md:justify-between">
                <div>
@@ -20,17 +20,17 @@
 
             <div class="overflow-hidden sm:rounded-lg">
                 
-                <div class="  px-6">
+                <div class="  ">
                       
-                        <div class=" py-4  my-4 ">
+                        <div class=" py-4  my-2 ">
 
-                            <div class="grid md:grid-cols-10  md:gap-6 gap-2">
+                            <div class="grid md:grid-cols-12  md:gap-6 gap-2">
                                 
                                 <div class="col-span-2 bg-white shadow-xl rounded-md md:h-64 h-32 font-bold px-4 py-2 pt-0 mb-3">
                                     <div class=" flex flex-col h-full">
 
                                         <div class="flex items-center justify-center h-full w-full">
-                                            Ticket Couple Interne
+                                            Couple Interne
                                         </div>
                                        
                                         @if($etat)
@@ -46,7 +46,7 @@
                                     <div class=" flex flex-col h-full">
 
                                         <div class="flex items-center justify-center h-full w-full">
-                                            Ticket Couple Externe
+                                            Couple Externe
                                         </div>
                                        
                                         @if($etat)
@@ -62,7 +62,7 @@
                                     <div class=" flex flex-col h-full">
 
                                         <div class="flex items-center justify-center h-full w-full">
-                                            Ticket Solo Interne
+                                             Solo Interne
                                         </div>
                                        
                                         @if($etat)
@@ -78,7 +78,7 @@
                                     <div class=" flex flex-col h-full">
 
                                         <div class="flex items-center justify-center h-full w-full">
-                                            Ticket Solo Externe
+                                             Solo Externe
                                         </div>
                                        
                                         @if($etat)
@@ -94,7 +94,7 @@
                                     <div class=" flex flex-col h-full">
 
                                         <div class="flex items-center justify-center h-full w-full">
-                                            Ticket Couple Mixte
+                                             Couple Mixte
                                         </div>
                                        
                                         @if($etat)
@@ -106,6 +106,21 @@
                                     
                                 </div>
                                 
+                                <div class="col-span-2 bg-white shadow-xl rounded-md md:h-64 h-32 font-bold px-4 py-2 pt-0 mb-3">
+                                    <div class=" flex flex-col h-full">
+
+                                        <div class="flex items-center justify-center h-full w-full">
+                                             Couple Duo
+                                        </div>
+                                       
+                                        @if($etat)
+                                        <div class="text-center py-2">
+                                            <a class="px-4 py-2 rounded-md font-bold bg-myblue text-white" href="{{route('admin.ticket.create.tdi')}}"> Enregistrer </a>
+                                        </div>
+                                        @endif
+                                    </div>
+                                    
+                                </div>
                                
 
                             </div>

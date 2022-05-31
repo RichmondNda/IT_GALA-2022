@@ -8,6 +8,7 @@ use App\Models\Gala;
 use App\Models\Nomine;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NomineController extends Controller
 {
@@ -59,39 +60,47 @@ class NomineController extends Controller
 
             if($etudiant)
             {
-
-                $gala = Gala::orderBy('created_at', 'DESC')->first() ;
                 $user = User::where('id', $etudiant->user_id)->first();
-
-                
-                $imageName = uniqid().'Award'.time().'.'.$request->photo->extension();  
-            
-                $request->photo->move(public_path('images'), $imageName);
-
-                
 
                 $exist = Nomine::where('user_id', $user->id)->first();
 
-                if(!$exist)
+                if($exist)
                 {
+                    session()->flash('Warning', 'Ce étudiant est déjà nominé pour cette catégorie.');   
+                }else
+                {
+
+                    $gala = Gala::orderBy('created_at', 'DESC')->first();
+
+                    $imageName = uniqid().'Award'.time().'.'.$request->photo->extension();  
+
+                    $imagePath=$imageName;
+
+                    if(env("FILESYSTEM_DRIVER")=="s3")
+                    {
+
+                        $imagePath="public/$imagePath";
+
+                        Storage::disk('s3')->put($imagePath, file_get_contents($request->photo));
+
+                        $x = Storage::disk('s3')->url($imagePath);
+
+                    }  
+                    else 
+                    {
+                        $request->photo->move(public_path('images'), $imageName);
+                    }
+
                     $nomine = Nomine::create([
-                             'photo' => $imageName,
-                             'user_id' => $user->id,
-                             'categorie_id' => $categorie->id,
-                             'gala_id' => $gala->id
-                         ]);
-                 
-                         session()->flash('success', $etudiant->nom.' '.$etudiant->prenom.' enregistré avec succes.');
-         
-                }
+                        'photo' => $imagePath,
+                        'user_id' => $user->id,
+                        'categorie_id' => $categorie->id,
+                        'gala_id' => $gala->id
+                    ]);
+            
+                    session()->flash('success', $etudiant->nom.' '.$etudiant->prenom.' enregistré avec succes.');
 
-                else{
-
-                    session()->flash('Warning', 'Ce étudiant est déjà nominé pour cette catégorie.');
-                  
-                }
-
-                
+                }                
                 
             }
             else{

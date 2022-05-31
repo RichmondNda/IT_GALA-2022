@@ -92,6 +92,14 @@ class AdminSeeder extends Seeder
             'libelle' => 'couple externe',
             'prix' => 40000,
             'gala_id' => $gala->id
-        ]);
+        ]);  
+
+        TypeTicket::create([
+            'libelle' => 'duo interne',
+            'prix' => 35000,
+            'gala_id' => $gala->id
+        ]); 
+
+        
     }
 }

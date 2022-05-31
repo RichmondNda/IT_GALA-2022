@@ -97,8 +97,11 @@ Route::middleware([
     Route::get('/tickets/create/solo_interne', 'App\Http\Controllers\TicketController@createTSI')->name('admin.ticket.create.tsi') ;
     Route::get('/tickets/create/solo_externe', 'App\Http\Controllers\TicketController@createTSE')->name('admin.ticket.create.tse') ;
     Route::get('/tickets/create/couple_mixte', 'App\Http\Controllers\TicketController@createTCM')->name('admin.ticket.create.tcm') ;
+    Route::get('/tickets/create/duo_interne', 'App\Http\Controllers\TicketController@createTDI')->name('admin.ticket.create.tdi') ;
+
 
     Route::post('/tickets/store/couple_interne', 'App\Http\Controllers\TicketController@storeInterneCouple')->name('admin.ticket.store.tci') ;
+    Route::post('/tickets/store/duo_interne', 'App\Http\Controllers\TicketController@storeInterneDuo')->name('admin.ticket.store.tdi') ;
     Route::post('/tickets/store/couple_externe', 'App\Http\Controllers\TicketController@storeExterneCouple')->name('admin.ticket.store.tce') ;
     Route::post('/tickets/store/solo_interne', 'App\Http\Controllers\TicketController@storeInterneSolo')->name('admin.ticket.store.tsi') ;
     Route::post('/tickets/store/solo_externe', 'App\Http\Controllers\TicketController@storeExterneSolo')->name('admin.ticket.store.tse') ;

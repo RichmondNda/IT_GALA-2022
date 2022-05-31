@@ -182,6 +182,13 @@ class TicketController extends Controller
 
         return view('admin.tickets.createTCM', compact('categorie')) ;
     }
+    public function createTDI()
+    {
+        $gala = Gala::orderBy('created_at', 'DESC')->first() ;
+        $categorie = TypeTicket::where('gala_id', $gala->id)->where('libelle', 'duo interne')->first() ;
+
+        return view('admin.tickets.createTDI', compact('categorie')) ;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -557,6 +564,101 @@ class TicketController extends Controller
         return redirect()->back() ;
        
     }
+
+
+    public function storeInterneDuo(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string',
+            'prenom' => 'required|string',
+            'email' => 'required|string|email',
+            'contact' => 'required|string',
+            'matricule_1' => 'required|string|min:10',
+            'matricule_2' => 'required|string'
+        ]);
+
+        $typeTicket = TypeTicket::where('libelle', 'duo interne')->first() ;
+
+        $gala = Gala::orderBy('created_at', 'DESC')->first() ;
+
+
+        // on verifie si ils n'ont pas déjà éffectué le paiement
+
+        $personneExist1 = Personne::where('matricule', $request->matricule_1)->first() ;
+        $personneExist2 = Personne::where('matricule', $request->matricule_2)->first() ;
+
+        if($personneExist1 || $personneExist2)
+        {
+            session()->flash('Warning', 'l\'un des matricules à déjà été utilisé');
+
+            return redirect()->back() ;
+        }
+        
+        // verification des étudaints
+
+        $etudiantHomme = Etudiant::where('matricule', $request->matricule_h)->first() ;
+
+        if($etudiantHomme )
+        {
+            $etudiantFemme = Etudiant::where('matricule', $request->matricule_f)->first() ;
+
+            if( $etudiantFemme )
+            {
+
+                $personne_1 = Personne::create([
+                    'nom' => $request->nom ,
+                    'prenom' => $request->prenom,
+                    'email' => $request->email ,
+                    'contact' => $request->contact ,
+                    'matricule' => $request->matricule_1 ,
+
+                ]);
+
+                $personne_2 = Personne::create([
+                    'nom' => $etudiantFemme->nom ,
+                    'prenom' => $etudiantFemme->prenom,
+                    'email' => $request->email ,
+                    'contact' => $request->contact ,
+                    'matricule' => $request->matricule_2 ,
+
+                ]);
+
+                $ticket = Ticket::create([
+                    'gala_id' => $gala->id,
+                    'homme_id' => $personne_1->id,
+                    'femme_id' => $personne_2->id,
+                    'type_id' => $typeTicket->id,
+                    'nbUtilisation' => 2,
+                    'code' => ''
+                ]);
+
+                Log::create([
+                    'user_id' =>  Auth::user()->id,
+                    'ticket_id' => $ticket->id
+                ]);
+
+                $code = 'ITGALA22-00'.$ticket->id ;
+                $ticket->code = $code ;
+                $ticket->save() ;
+
+
+                session()->flash('success', 'Ticket enregistré avec success.');
+            }
+            else
+            {
+                session()->flash('Warning', 'Matricule de l\'etudiant 2 incorrecte .');
+            }
+
+           return redirect()->back() ;
+        }else
+        {
+            session()->flash('Warning', 'Matricule de l\'etudiant 1 incorrecte .');
+        }
+
+        redirect()->back() ;
+       
+    }
+
 
 
     /**
