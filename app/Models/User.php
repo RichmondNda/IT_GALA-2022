@@ -63,6 +63,51 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function logsTicket() : string
+    {
+        $logs = Log::where('user_id', $this->id)->get();
+        
+        $nb_tickets_solo = 0 ;
+
+        $nb_tickets_couple = 0 ;
+
+        foreach ($logs as $log) {
+
+            if($log->ticket->nbUtilisation == 1)
+            {
+                $nb_tickets_solo += $log->ticket->nbUtilisation ;
+            }
+            else
+            {
+                $nb_tickets_couple += $log->ticket->nbUtilisation ;
+            }
+            
+        }
+
+        return '( '.$nb_tickets_solo .' , '. $nb_tickets_couple .' ) '  ;
+
+    }
+
+    public function sommeEnPossesion() : int
+    {
+        $logs = Log::where('user_id', $this->id)->get();
+        
+        $somme_en_possession = 0 ;
+
+        foreach ($logs as $log) {
+
+            
+                $somme_en_possession += $log->ticket->type->prix ;
+            
+            
+            
+        }
+
+        return $somme_en_possession  ;
+
+    }
+
+
 
     public function etudiant()
     {

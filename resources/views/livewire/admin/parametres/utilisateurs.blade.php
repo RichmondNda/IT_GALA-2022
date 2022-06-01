@@ -79,7 +79,7 @@
                                         Pseudo
                                     </th>
                                     <th scope="col-span-2" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                       Adresse E mail
+                                       Somme en possesion
                                     </th>
 
                                     <th scope="col-span-2" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
@@ -110,7 +110,7 @@
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             
                                             <div class="font-bold text-gray-900 text-md">
-                                                {{$utilisateur->email }} 
+                                               {{$utilisateur->sommeEnPossesion(). ' F CFA'}}
                                             </div>
                                         </td>
 
@@ -131,6 +131,7 @@
                                                 
                                                 <div class="ml-4">
                                                     <div class="font-bold text-gray-900 text-md">
+                                                     {{$utilisateur->logsTicket()   }}
                                                      
                                                     </div>
                                                 </div>

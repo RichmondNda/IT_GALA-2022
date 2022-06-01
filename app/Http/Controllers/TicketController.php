@@ -122,8 +122,12 @@ class TicketController extends Controller
     {
         $gala = Gala::orderBy('created_at', 'DESC')->first() ;
         $categories = TypeTicket::where('gala_id', $gala->id)->get() ;
+        $nb_tickets =  0 ;
+        $tickets = Ticket::where(['gala_id' => $gala->id ] )->get();
 
-        $nb_tickets = Ticket::where(['gala_id' => $gala->id ] )->get()->count();
+        foreach ($tickets as $ticket) {
+            $nb_tickets +=  $ticket->nbUtilisation ;
+        }
 
         $nb_max_tickets = $gala->nbPlace ;
 
