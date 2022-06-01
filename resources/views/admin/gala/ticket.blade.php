@@ -14,7 +14,7 @@
                 background-color: #000;
                 color: #fff;
                 border-radius: 15px;
-                background-image: url(bg6.webp);
+                background-image: url(bg_ticket.jpg);
                 background-size: cover;
                 background-position: center;
                 border: 1px solid #000;
@@ -144,7 +144,7 @@
                     <div class="ticket-owner">
                         <div class="owner-name">
                             {{$nom}}
-                            <br>
+                            
                             {{$prenom}}
                         </div>
                         <div class="ticket-num">
