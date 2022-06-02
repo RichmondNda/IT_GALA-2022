@@ -82,7 +82,7 @@
                             <form  style="" action="{{ route('admin.ticket.store.tse',null,false) }}" class="" method="post" enctype="multipart/form-data">
                                 @csrf
 
-                                <div class="grid grid-cols-6 gap-6">
+                                <div class="grid md:grid-cols-6 gap-6">
                                     
                                     <div class="col-span-2 pt-0 mb-3">
                                         <label class="font-bold "> Nom</label>

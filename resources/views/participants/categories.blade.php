@@ -20,7 +20,11 @@
                             @if(Auth::user()->hasVote($categorie->id))
 
                                 <div class="h-64 flex justify-center ">
-                                    <img class="object-contain  h-full"   src="{{asset('images/'.  Auth::user()->getPersoneVoted($categorie->id)->photo)}}" alt="{{Auth::user()->getPersoneVoted($categorie->id)->user->etudiant->nom}}">
+                                    @if(env("FILESYSTEM_DRIVER")=="s3")
+                                        <img class="object-contain  h-full"   src="{{Storage::url(Auth::user()->getPersoneVoted($categorie->id)->photo)}}" alt="{{Auth::user()->getPersoneVoted($categorie->id)->user->etudiant->nom}}">
+                                    @else
+                                        <img class="object-contain  h-full"   src="{{asset('images/'.  Auth::user()->getPersoneVoted($categorie->id)->photo)}}" alt="{{Auth::user()->getPersoneVoted($categorie->id)->user->etudiant->nom}}">
+                                    @endif
                                 </div>
 
 
