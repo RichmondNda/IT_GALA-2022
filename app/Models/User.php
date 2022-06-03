@@ -75,14 +75,15 @@ class User extends Authenticatable
 
             if($log->ticket->nbUtilisation == 1)
             {
-                $nb_tickets_solo += $log->ticket->nbUtilisation ;
+                $nb_tickets_solo += 1 ;
             }
             else
             {
-                $nb_tickets_couple += $log->ticket->nbUtilisation ;
+                $nb_tickets_couple += 1 ;
             }
             
         }
+        
 
         return '( '.$nb_tickets_solo .' , '. $nb_tickets_couple .' ) '  ;
 
@@ -96,10 +97,7 @@ class User extends Authenticatable
 
         foreach ($logs as $log) {
 
-            
                 $somme_en_possession += $log->ticket->type->prix ;
-            
-            
             
         }
 
