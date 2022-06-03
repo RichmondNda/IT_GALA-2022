@@ -600,11 +600,11 @@ class TicketController extends Controller
         
         // verification des étudaints
 
-        $etudiantHomme = Etudiant::where('matricule', $request->matricule_h)->first() ;
+        $etudiantHomme = Etudiant::where('matricule', $request->matricule_1)->first() ;
 
         if($etudiantHomme )
         {
-            $etudiantFemme = Etudiant::where('matricule', $request->matricule_f)->first() ;
+            $etudiantFemme = Etudiant::where('matricule', $request->matricule_2)->first() ;
 
             if( $etudiantFemme )
             {
@@ -653,13 +653,13 @@ class TicketController extends Controller
                 session()->flash('Warning', 'Matricule de l\'etudiant 2 incorrecte .');
             }
 
-           return redirect()->back() ;
+          
         }else
         {
             session()->flash('Warning', 'Matricule de l\'etudiant 1 incorrecte .');
         }
 
-        redirect()->back() ;
+        return redirect()->back() ;
        
     }
 

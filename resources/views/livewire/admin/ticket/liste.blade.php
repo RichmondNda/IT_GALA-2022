@@ -6,7 +6,7 @@
             <div class=" overflow-hidden sm:rounded-lg">
                 
                 
-                <div class="flex justify-center py-2 px-4 ">
+                <div class="md:flex justify-center py-2 px-4 ">
         
                     <div class="pt-0 mb-3">
                         <div class="ml-3 ">
