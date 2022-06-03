@@ -21,6 +21,11 @@ Route::get('/', function () {
     return view('galaWelcome');
 })->name('welcome');
 
+Route::get('/finvotes', function () {
+    // return view('welcome');
+    return view('galaStopVotes');
+})->name('fin.vote');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -78,14 +83,14 @@ Route::middleware([
 
     Route::group(['middleware' => ['role:participant']], function () {
 
-    //participants
+        //participants
 
-    Route::post('/awards/categorie/vote',  'App\Http\Controllers\EtudiantController@index')->name('admin.award.liste_vote_categorie') ;
-    Route::post('/awards/vote',  'App\Http\Controllers\EtudiantController@store')->name('admin.award.effectuer_vote') ;
+        Route::post('/awards/categorie/vote',  'App\Http\Controllers\EtudiantController@index')->name('admin.award.liste_vote_categorie') ;
+        Route::post('/awards/vote',  'App\Http\Controllers\EtudiantController@store')->name('admin.award.effectuer_vote') ;
 
-    Route::post('/awards/remove/vote', 'App\Http\Controllers\EtudiantController@removeVote')->name('admin.award.remove_vote');
+        Route::post('/awards/remove/vote', 'App\Http\Controllers\EtudiantController@removeVote')->name('admin.award.remove_vote');
 
-    Route::get('/awards/categories',  'App\Http\Controllers\VoteController@index')->name('admin.award.liste_categorie') ;
+        Route::get('/awards/categories',  'App\Http\Controllers\VoteController@index')->name('admin.award.liste_categorie') ;
 
     });
 

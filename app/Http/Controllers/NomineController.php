@@ -29,8 +29,10 @@ class NomineController extends Controller
      */
     public function create()
     {
+    
         $categories = Categorie::all() ;
         return view('admin.nomination', compact('categories'));
+    
     }
 
     /**

@@ -75,7 +75,7 @@
                             @else
 
                                 <div class="h-64 flex items-center justify-center ">
-                                <span class="font-bold text-xl"> {{$categorie->libelle}} </span>
+                                <span class="font-bold text-center text-xl"> {{$categorie->libelle}} </span>
                                 </div>
 
 

@@ -112,12 +112,30 @@
                                                 {{$gala->nomPco2}} 
                                             </div>
                                         </td>
+                                       
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 
                                                 <div class="ml-4">
                                                     <div class="font-bold text-gray-900 text-md">
                                                         {{$gala->nbPlace}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                
+                                                <div class="ml-4">
+                                                    <div class="font-bold text-gray-900 text-md">
+                                                        <button class="px-2 py-2 bg-gray-300 rounded-md" wire:click='bloqueVote({{$gala->id}})'>
+                                                            @if ($gala->status)
+                                                                Desactiver
+                                                            @else
+                                                                Activer
+                                                            @endif
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -54,6 +54,14 @@ class Gala extends Component
         $this->resetInput();
     }
 
+    public function bloqueVote(int $id)
+    {
+        
+        $gala = ModelsGala::find($id) ;
+        $gala->status = ! $gala->status ;
+        $gala->save() ;
+    }
+
     
 
 }

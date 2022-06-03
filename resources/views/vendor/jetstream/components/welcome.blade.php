@@ -5,14 +5,16 @@
         </div>
         <div class="col-span-4">
             <div class="mt-8 text-2xl">
-                Bienvenu sur la page d'acceuil de l'<span class="font-bold">IT GALA APP</span>
+                Bienvenue sur la page d'acceuil de l'<span class="font-bold">IT GALA APP</span>
             </div>
         
             <div class="mt-6 text-gray-500">
-                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-                to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-                you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-                ecosystem to be a breath of fresh air. We hope you love it.
+                Baptisé IT-Gala, le dîner gala des étudiants de l’ESATIC est le plus grand évènement festif et professionnel organisé par le
+                Conseil Estudiantin de l’ESATIC (C2E) qui a pour but de créer un cadre associatif et d’échanges.
+                Au-delà de son aspect purement festif, il réunit les grands acteurs de l’industrie des Technologies de l’Information et de la
+                Communication (TIC). Il favorise également les retrouvailles entre toutes les promotions de l’ESATIC, et fait le bilan de toutes les
+                activités effectuées au cours de l’année.
+                La 5ème Edition du gala de fin d’année se déroulera le Samedi 11 Juin 2022 à 18h30.
             </div>
         </div>
    </div>
@@ -26,18 +28,13 @@
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
+                <ul>
+                    <ol> Le panel </ol>
+                    <ol> Miss et Mister IT </ol>
+                    <ol> IT awards </ol>
+                </ul>
             </div>
 
-            <a href="https://laravel.com/docs">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Explore the documentation</div>
-
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
-            </a>
         </div>
     </div>
 
@@ -48,18 +45,12 @@
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                <ul>
+                    <ol> Prestation d'artisites </ol>
+                    <ol> Defilés  </ol>
+                </ul>
             </div>
 
-            <a href="https://laracasts.com">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Start watching Laracasts</div>
-
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
-            </a>
         </div>
     </div>
 

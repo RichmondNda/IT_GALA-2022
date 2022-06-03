@@ -36,9 +36,21 @@ class VoteController extends Controller
         }
         
 
-       
 
-        return view('participants.categories', compact('categories'));
+        $gala = Gala::orderBy('created_at', 'DESC')->first() ;
+
+        $statut = $gala->status ;
+
+        if($statut)
+        {
+            return view('participants.categories', compact('categories'));
+        }
+        else
+        {
+            return view('galaStopVotes');
+        }
+
+      
     }
 
     /**
