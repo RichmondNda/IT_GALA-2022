@@ -37,7 +37,7 @@ class ControlController extends Controller
 
             if( $ticket->nbUtilisation == 0)
             {
-                $ticket->statut = false ;
+                $ticket->statut = true ;
                 
                 $ticket->save();
 

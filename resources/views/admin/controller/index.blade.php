@@ -15,7 +15,7 @@
             @livewire('admin.ticket.qr-code')
         </div>
 
-        <div class="font-bold md:col-span-2 h-full  text-center md:text-2xl text-xl font-bold ">
+        <div class="font-bold md:col-span-2 h-full  text-center md:text-2xl text-xl ">
             Nous avons scanné <span class="text-myblue"> {{$nb_scanne}}/ {{$nb_tickets}} </span> ticket(s).
             
         </div>
