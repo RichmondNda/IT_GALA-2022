@@ -11,7 +11,7 @@
 
             <div class="pt-8 px-6 md:flex gap-6  md:justify-between">
                <div>
-                <a href="{{route('admin.ticket.liste')}}" class="px-4 rounded-md py-2 bg-orange text-md font-bold">Liste achetteurs</a>
+                <a href="{{route('admin.ticket.liste')}}" class="px-4 rounded-md py-2 bg-orange text-md font-bold">Liste acheteurs</a>
                </div>
                <div class="text-xl font-bold py-6 ">
                    Il y a <span class="bg-myblue text-white rounded-md px-2">{{$nb_place_dispo}} tickets(s)</span> disponibles
