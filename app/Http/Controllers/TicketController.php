@@ -58,7 +58,7 @@ class TicketController extends Controller
        
        // return $pdf->download('dfdf.pdf');
 
-        return $pdf->stream($nom.'_'.$prenom.'pdf');
+        return $pdf->stream($nom.'_'.$prenom.'.pdf');
 
        // return view('admin.gala.ticket') ;
     }
