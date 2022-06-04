@@ -15,6 +15,8 @@ class CategorieNomine extends Component
     public $nbMax = "";
     public $promotion = 0 ;
 
+    
+
 
     public function render()
     {
@@ -57,6 +59,16 @@ class CategorieNomine extends Component
         ]);
 
         $this->resetInput();
+    }
+
+    public function deleteCat(int $id)
+    {
+        if($id)
+        {
+            $categorie = Categorie::where('id',$id)->first() ;
+            $categorie->delete() ;
+
+        }
     }
 
 }
