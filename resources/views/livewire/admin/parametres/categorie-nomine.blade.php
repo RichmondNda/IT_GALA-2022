@@ -58,9 +58,10 @@
 
                         <div class="flex justify-end">
                             <button 
-                                wire:click.prevent='createTypeTicket()'
+                                wire:click.prevent='@if(!$edit_mode) createTypeTicket() @else updateCat({{$edit_id}}) @endif'
                                 class="px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 rounded shadow outline-none ease-linearbg-emerald-500 bg-myblue hover:shadow-lg focus:outline-none" type="submit">
-                                 Enregistrer
+                                 
+                                 @if(!$edit_mode) Enregistrer @else Mettre à jour @endif
                             </button>
                         </div>
         
@@ -151,12 +152,20 @@
                                             <div class="flex items-center">
                                                 
                                                 <div class="ml-4">
-                                                    <div class="font-bold text-gray-900 text-md">
+                                                    <div class="font-bold  text-gray-900 text-md">
+                                                       
                                                         <button 
-                                                        wire:click.prevent='deleteCat({{$cat->id}})'
-                                                        class="px-2 py-2 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 rounded shadow outline-none ease-linearbg-emerald-500 bg-red-600 hover:shadow-lg focus:outline-none" type="submit">
-                                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                                                    </button>
+                                                            wire:click.prevent=' editCat({{$cat->id}})'
+                                                            class="px-2 py-2 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 rounded shadow outline-none ease-linearbg-emerald-500 bg-myblue hover:shadow-lg focus:outline-none" type="submit">
+                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>                     
+                                                        </button>
+
+                                                        <button 
+                                                            wire:click.prevent='deleteCat({{$cat->id}})'
+                                                            class="px-2 py-2 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 rounded shadow outline-none ease-linearbg-emerald-500 bg-red-600 hover:shadow-lg focus:outline-none" type="submit">
+                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                                        </button>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

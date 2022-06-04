@@ -88,8 +88,13 @@ Route::middleware([
         Route::post('/awards/categorie/vote',  'App\Http\Controllers\EtudiantController@index')->name('admin.award.liste_vote_categorie') ;
         Route::post('/awards/vote',  'App\Http\Controllers\EtudiantController@store')->name('admin.award.effectuer_vote') ;
 
-        Route::post('/awards/remove/vote', 'App\Http\Controllers\EtudiantController@removeVote')->name('admin.award.remove_vote');
+        Route::get('/awards/categorie/vote', function(){
+            return redirect()->back();
+        });
 
+
+        Route::post('/awards/remove/vote', 'App\Http\Controllers\EtudiantController@removeVote')->name('admin.award.remove_vote');
+        
         Route::get('/awards/categories',  'App\Http\Controllers\VoteController@index')->name('admin.award.liste_categorie') ;
 
     });

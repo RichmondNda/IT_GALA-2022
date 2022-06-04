@@ -14,8 +14,10 @@ class CategorieNomine extends Component
     public $libelle = "";
     public $nbMax = "";
     public $promotion = 0 ;
+    public $edit_mode = false ;
+    public $edit_id = 0 ;
 
-    
+
 
 
     public function render()
@@ -37,7 +39,7 @@ class CategorieNomine extends Component
        
         $this->libelle = "";
         $this->nbMax = "";
-        
+        $this->edit_id = 0 ;
     }
 
 
@@ -68,6 +70,40 @@ class CategorieNomine extends Component
             $categorie = Categorie::where('id',$id)->first() ;
             $categorie->delete() ;
 
+        }
+    }
+
+
+    public function editCat(int $id)
+    {
+        if($id)
+        {
+            $categorie = Categorie::where('id',$id)->first() ;
+            
+            $this->edit_id = $categorie->id ;
+            $this->libelle = $categorie->libelle ; 
+            $this->nbMax = $categorie->nbMax ;
+            $this->promotion = $categorie->indicePromotion ;
+
+            $this->edit_mode = true ;
+        }
+    }
+
+    public function updateCat(int $id)
+    {
+        if($id)
+        {
+            $categorie = Categorie::where('id',$id)->first() ;
+            
+            $categorie->libelle =  $this->libelle ; 
+            $categorie->nbMax = $this->nbMax ;
+            $categorie->indicePromotion = $this->promotion  ;
+
+            $categorie->save() ;
+
+            $this->edit_mode = false ;
+
+            $this->resetInput() ;
         }
     }
 
