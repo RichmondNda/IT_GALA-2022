@@ -63,6 +63,9 @@
                                         <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                #
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                                 Matricule 
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
@@ -86,7 +89,15 @@
                                             @foreach ($nomines as $nomine)
                                             <tr>
                                                 
-            
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="flex items-center">
+                                                        @if(env("FILESYSTEM_DRIVER")=="s3")
+                                                            <img class="object-contain w-16 h-16 border border-gray-300 rounded-full"   src="{{Storage::url($nomine->photo)}}" alt="{{$nomine->user->etudiant->nom}}">
+                                                        @else
+                                                            <img class="object-contain w-16 h-16 border border-gray-300 rounded-full"   src="{{asset('images/'. $nomine->photo)}}" alt="{{$nomine->user->etudiant->nom}}">
+                                                        @endif
+                                                    </div>
+                                                </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="flex items-center">
                                                         
