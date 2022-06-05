@@ -298,7 +298,7 @@ class TicketController extends Controller
             session()->flash('Warning', 'Matricule de l\'homme incorrecte .');
         }
 
-        redirect()->back() ;
+        return redirect()->back() ;
        
     }
 
