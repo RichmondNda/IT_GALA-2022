@@ -61,6 +61,9 @@ Route::middleware([
             return view('admin.gestionnaire') ;
         } )->name('admin.gestionnaire');
 
+
+        Route::get('/exportpdf','App\Http\Controllers\pdfController@exportPdfListe')->name('exportPDF');
+
     });
 
     Route::group(['middleware' => ['role:Super@Administrateur|Administrateur']], function () {

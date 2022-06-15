@@ -14,4 +14,16 @@ class Ticket extends Model
     {
         return $this->belongsTo(TypeTicket::class) ;
     }
+
+    public function getPersonne(int $id)
+    {
+        return Personne::find($id) ;
+    }
+
+    public function getRegister()
+    {
+        $log = Log::where('ticket_id', $this->id)->first() ;
+        return User::find($log->user_id) ;
+    }
+
 }

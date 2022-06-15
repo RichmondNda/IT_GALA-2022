@@ -96,15 +96,15 @@
                         </div>
 
                          <div class="items-center justify-center gap-4 md:flex ">
-                            {{--
-                                <a href="{{ route('exportExcel', 'xlsx', false) }}">
-                                    <button class="px-4 py-2 mt-5 font-bold text-white bg-green-600 rounded-md">Exporter Excel xlsx</button>
+                            
+                                <a href="{{ route('exportPDF', false) }}" target="_blank">
+                                    <button class="px-4 py-2 mt-5 font-bold text-white bg-green-600 rounded-md">Exporter la liste des participants</button>
                                 </a>
-                                <a href="{{ route('exportExcel', 'csv', false) }}">
+                                {{-- <a href="{{ route('exportExcel', 'csv', false) }}">
                                     <button class="px-4 py-2 mt-5 font-bold text-white bg-green-600 rounded-md">Exporter CSV</button>
-                                </a>
+                                </a> --}}
 
-                            --}}
+                           
 
                             <form id="viderForm" style="" action="{{ route('delete.allStudent',null,false) }}" class="" method="post" enctype="multipart/form-data">
                                 @csrf
