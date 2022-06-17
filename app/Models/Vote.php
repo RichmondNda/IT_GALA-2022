@@ -10,4 +10,16 @@ class Vote extends Model
     use HasFactory;
 
     protected $guarded = [] ;
+
+    public function categorie() 
+    {
+        return $this->belongsTo(Categorie::class) ;
+    }
+
+    public function nomine() 
+    {
+        return $this->belongsTo(Nomine::class) ;
+    }
 }
+
+

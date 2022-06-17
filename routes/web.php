@@ -64,6 +64,8 @@ Route::middleware([
 
         Route::get('/exportpdf','App\Http\Controllers\pdfController@exportPdfListe')->name('exportPDF');
 
+        Route::get('/exportWinnerPdf','App\Http\Controllers\pdfController@exportAwardPDF')->name('exportWinnersPDF');
+
     });
 
     Route::group(['middleware' => ['role:Super@Administrateur|Administrateur']], function () {
@@ -136,6 +138,8 @@ Route::middleware([
 });
 
 });
+
+
 
 
 // Route::get('/test', function(){

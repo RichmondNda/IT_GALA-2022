@@ -97,12 +97,12 @@
 
                          <div class="items-center justify-center gap-4 md:flex ">
                             
-                                <a href="{{ route('exportPDF', false) }}" target="_blank">
+                                <a href="{{ route('exportPDF', false, null) }}" target="_blank">
                                     <button class="px-4 py-2 mt-5 font-bold text-white bg-green-600 rounded-md">Exporter la liste des participants</button>
                                 </a>
-                                {{-- <a href="{{ route('exportExcel', 'csv', false) }}">
-                                    <button class="px-4 py-2 mt-5 font-bold text-white bg-green-600 rounded-md">Exporter CSV</button>
-                                </a> --}}
+                                <a href="{{ route('exportWinnersPDF', false, null) }}">
+                                    <button class="px-4 py-2 mt-5 font-bold text-white bg-gray-600 rounded-md">Exporter la liste des Nominés</button>
+                                </a>
 
                            
 
