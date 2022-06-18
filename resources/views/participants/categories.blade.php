@@ -15,7 +15,10 @@
                     
                     @foreach ($categories as $categorie )
                     
-                        <div class="col-span-3 bg-white rounded-md shadow-sm p-4  ">
+                        <div class="col-span-3 bg-white rounded-md shadow-sm p-4  
+                            @if($categorie->libelle != 'MISTER IT'and $categorie->libelle != 'MISS IT')
+                                 hidden
+                             @endif " >
                                 
                             @if(Auth::user()->hasVote($categorie->id))
 
