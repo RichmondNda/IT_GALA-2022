@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GalaController;
 use App\Http\Livewire\Admin\Award\Liste;
 use App\Http\Livewire\Admin\Ticket\Liste as TicketListe;
 use Illuminate\Support\Facades\Route;
@@ -22,8 +23,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/finvotes', function () {
-    // return view('welcome');
-    return view('galaStopVotes');
+       return view('galaStopVotes');
 })->name('fin.vote');
 
 Route::middleware([
@@ -52,6 +52,8 @@ Route::middleware([
         Route::get('/parametres', function () {
             return view('admin.parametres');
         })->name('admin.parametres');
+
+        
     
         Route::post('/importExcel', 'App\Http\Controllers\ExcelController@importExcel')->name('importExcel');
         Route::post('/delete/allStudent', 'App\Http\Controllers\ExcelController@DeleteAllStudent')->name('delete.allStudent') ;
@@ -65,6 +67,13 @@ Route::middleware([
         Route::get('/exportpdf','App\Http\Controllers\pdfController@exportPdfListe')->name('exportPDF');
 
         Route::get('/exportWinnerPdf','App\Http\Controllers\pdfController@exportAwardPDF')->name('exportWinnersPDF');
+
+
+        // creation de gala
+
+        Route::post('/gala/store', [GalaController::class, 'store'])->name('gala.create');
+        Route::patch('/gala/update/{id}', [GalaController::class, 'update'])->name('gala.update');
+
 
     });
 

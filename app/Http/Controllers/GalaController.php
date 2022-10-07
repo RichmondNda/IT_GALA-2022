@@ -46,14 +46,16 @@ class GalaController extends Controller
 
 
         $gala = Gala::create([
-            'annee' => $this->annee_gala,
-            'nomPco1' => $this->nom_pco1,
-            'nomPco2' => $this->nom_pco2,
-            'nbPlace' => $this->nb_place
+            'annee' =>   $request->annee_gala,
+            'nomPco1' => $request->nom_pco1,
+            'nomPco2' => $request->nom_pco2,
+            'nbPlace' => $request->nb_place
         ]);
 
+     
+
         session()->flash('success', 'Gala enregistré avec success.');
-        // return redirect()->back() ;
+         return redirect()->back() ;
     }
 
     /**
@@ -85,12 +87,13 @@ class GalaController extends Controller
      * @param  \App\Models\Gala  $gala
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gala $gala)
+    public function update(Request $request, Int $id)
     {
 
-        $gala = Gala::where('id', $gala->id)->first();
+        $gala = Gala::where('id', $id)->first();
         
         $request->validate([
+            'annee_gala' => 'sometimes',
             'nom_pco1' => 'required|string',
             'nom_pco2' => 'required|string',
             'nb_place' => 'required|integer'
@@ -98,9 +101,10 @@ class GalaController extends Controller
 
 
         $gala->update([
-            'nomPco1' => $this->nom_pco1,
-            'nomPco2' => $this->nom_pco2,
-            'nbPlace' => $this->nb_place
+            'annee' =>   $request->annee_gala,
+            'nomPco1' => $request->nom_pco1,
+            'nomPco2' => $request->nom_pco2,
+            'nbPlace' => $request->nb_place
         ]);
 
         session()->flash('success', 'Gala mis à jour avec success avec success.');
